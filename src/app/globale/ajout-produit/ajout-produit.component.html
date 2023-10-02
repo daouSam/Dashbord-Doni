@@ -1,0 +1,94 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Ajout page</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="['/globale/menu']">catégorie</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="['/globale/ajoutProduit']">ajouter un produit</a></li>
+            </ol>
+        </nav>
+    </div>
+    <!-- End Page Title -->
+    <section class="section">
+        <div class="card col-sm-8">
+            <div class="card-body">
+                <h5 class="card-title">ajouter un nouveau produit</h5>
+                <h5 class="card-title">formulaire</h5>
+                <!-- Horizontal Form -->
+                <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+                    <div class="row mb-3">
+                        <label for="nomp" class="col-sm-2 col-form-label">Nom</label>
+                        <div class="col-sm">
+                            <input type="text" class="form-control" id="nomp" name="nomProduit" ngModel #nomProduit="ngModel">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="descrt" class="col-sm-2 col-form-label">Description</label>
+                        <div class="col-sm">
+                            <input type="text" class="form-control" name="description" ngModel #description="ngModel" id="descrt">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="prixkg" class="col-sm-2 col-form-label">Prix</label>
+                        <div class="col-sm">
+                            <input type="text" class="form-control" name="prixKg" ngModel #prixKg="ngModel" id="prixkg">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="qntte" class="col-sm-2 col-form-label">Quantité</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" name="quantite" ngModel #quantite="ngModel" id="qntte">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="form-group" class="col-sm-5">
+                            <label for="uniteprod">Unité du produit</label>
+                            <select id="uniteprod" class="form-control" name="uniteProd" ngModel #uniteProd="ngModel">
+                                <option value="">--Selectionner une unité--</option>
+                                <option value="Kg">kilogramme</option>
+                                <option value="unite">unité</option>
+                                <option value="planche">planche</option>
+                                <option value="litre">litre</option>
+                                <option value="boite">boîte</option>
+                                <option value="sachet">sachet</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="form-group" class="col-sm-5">
+                            <label for="catgrie">Catégorie</label>
+                            <select id="catgrie" class="form-control" name="categorie" ngModel #categorie="ngModel">
+                                <option>--Selectionner une catégorie--</option>
+                                <option *ngFor="let item of listCategorie" [ngValue]="item">{{item.type}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-5 offset-sm-2">
+                        </div>
+                        <div class="form-row">
+                            <div class="mb-2">
+                                <!-- <label for="photo1" class="form-label">Insérer une photo</label> -->
+                                <!-- <input #file type="file" id="photo1" class="form-control" ngModel name="photo1" (change)="chargephoto(file.files)" #photos> -->
+                                <img [src]="src" *ngIf="src"><br><br>
+                                <input type="file"  class="form-control" [imageToDataUrl]="options"
+                                (imageSelected)="selected($event)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <p-toast></p-toast>
+                        <button type="submit" pButton pRipple  label="Ajouter"  title="ajouter le nouveau produit" class="p-button-success mb-2"></button>
+                    </div>
+                  
+                </form>
+                <!-- End Horizontal Form -->
+            </div>
+        </div>
+    </section>
+
+</main>
+<!-- End #main -->

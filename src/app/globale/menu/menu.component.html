@@ -1,0 +1,109 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Catégories</h1>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
+        data-bs-target="#basicModal" class="btn btn-outline-success"  title="une nouvelle catégorie">Ajouter</button>
+        <button (click)="exportexcele()" style="display: none;">exports liste</button>
+
+        <div class="modal fade" id="basicModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">ajouter un catégorie produit</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">formulaire</h5>
+                                <!-- Horizontal Form -->
+                                <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+                                    <div class="row mb-3">
+                                        <div class="form-group ">
+                                            <label>Categorie type </label>
+                                            <!-- <input type="text"  id="type" name="type" ngModel #categorie="ngModel"> -->
+                                            <select id="type" name="type" ngModel #categorie="ngModel" class="form-select">
+                                                <option value="">--Selectionner une catégorie--</option>
+                                                <option value="Consommation">Consommation</option>
+                                                <option value="Semence">Sémence</option>
+                                                <option value="Engrais">Engrais</option>
+                                                <option value="Energie">Energie</option>
+                                                <option value="Pisciculture">Pisciculture</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"  title="fermer le formulaire">Fermer</button>
+                                        <button type="submit" class="btn btn-primary"  title="ajouter la catégorie">Ajouter</button>
+                                    </div>
+                                </form>
+                                <!-- End Horizontal Form -->
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div> 
+        </div>
+
+    </div>
+    <!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-3" *ngFor="let item of categoriee">
+                <div class="alert alert- alert-dismissible fade show" role="alert">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{item.type}}</h5>
+                            <!-- Slides with controls -->
+                            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="imagecat" [routerLink]="['/globale/listeProduit',item.type]" *ngIf="item.type=='Consommation'"><img src="assets/img/consommation.jpg " class="d-block w-100" alt=""> </div>
+                                        <div class="imagecat" [routerLink]="['/globale/listeProduit',item.type]" *ngIf="item.type=='Semence'" ><img src="assets/img/hands-planting.jpg " class="d-block w-100" alt=""> </div>
+                                        <div class="imagecat" [routerLink]="['/globale/listeProduit',item.type]" *ngIf="item.type=='Engrais'"><img src="assets/img/angrais1.jpeg " class="d-block w-100" alt=""> </div>
+                                        <div class="imagecat" [routerLink]="['/globale/listeProduit',item.type]" *ngIf="item.type=='Energie'"><img src="assets/img/energie.jpeg " class="d-block w-100" alt=""> </div>
+                                        <div class="imagecat" [routerLink]="['/globale/listeProduit',item.type]" *ngIf="item.type=='Pisciculture'"><img src="assets/img/pisciculture.jpg " class="d-block w-100" alt=""> </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Slides with controls -->
+                        </div>
+                        <button type="button" (click)="supprimer(item.id)" class="btn-close" disabled  title="supprimer la catégorie"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <table id="tablepaysans" class="table">
+            <thead class="a">
+                <tr>
+                    <th scope="col">categorie</th>
+                    <th scope="col">description</th>
+
+                    <th scope="col">nomProduit</th>
+                    <th scope="col"> prixKg</th>
+                    <th scope="col"> quantite</th>
+
+                    <th scope="col"> uniteProd</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of allprod">
+                    <td scope="col">{{item?.categorie?.type}}</td>
+                    <td scope="col">{{item?.description}}</td>        
+                    <td scope="col">{{item?.nomProduit}}</td>
+                    <td scope="col"> {{item?.prixKg}}</td>
+                    <td scope="col"> {{item?.quantite}}</td>        
+                    <td scope="col"> {{item?.uniteProd}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+</main>
+<!-- End #main -->

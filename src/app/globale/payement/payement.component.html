@@ -1,0 +1,89 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Profile</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item">Users</li>
+                <li class="breadcrumb-item active">Profile</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- End Page Title -->
+
+    <section class="section profile">
+        <div class="row">
+            <div class="col-xl-4">
+
+                <div class="card">
+                    <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+                        <img src="assets/img/money.png" alt="Profile" class="">
+                        <h2>Payement</h2>
+                      
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-xl-8">
+
+                <div class="card">
+                    <div class="card-body pt-3">
+                        <!-- Bordered Tabs -->
+
+                        <div class="tab-content pt-2">
+                            <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                                <div class="row ">
+                                    <div class="col-lg-3 col-md-4 label">Nom</div>
+                                    <div class="col-lg-9 col-md-8">{{detailpayement?.panier?.paysans?.prenom}} {{detailpayement?.panier?.paysans?.nom}}
+                                    </div>
+                                </div>
+
+                                <div class="d-flex">
+                                    <div class=" label ">Etat de la Commande :</div>
+                                    <div><td class="fw-bold eta"> <span class="badge bg-success">{{detailpayement?.etatCommande}}</span></td></div>
+                                </div><br>
+
+                                <div class="row ">
+                                    <div class="col-lg-3 col-md-4 label">Date</div>
+                                    <div class="col-lg-9 col-md-8">{{detailpayement?.date}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Montant total :</div>
+                                    <div class="col-lg-9 col-md-8 text-success">{{detailpayement?.panier?.montant}} F CFA</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">montant payer :</div>
+                                    <div class="col-lg-9 col-md-8 color-success">{{detailpayement.payer}} FCFA</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">montant restant :</div>
+                                    <div class="col-lg-9 col-md-8 color-success">{{detailpayement.reste}} FCFA</div>
+                                </div>
+
+                                <div class="row">
+                                    <form #editForm="ngForm">
+                                        <div class="">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label"> Montant Payer</label>
+                                            <div class="col-sm-10 d-flex">
+                                                <input type="text" class="form-control"  name="montantPayer" id="inputText" ngModel #montantPayer="ngModel" [(ngModel)]="detailpayement.montantPayer">
+                                                <button type="button" (click)="onUpdate()" class="btn btn-success"><i class="bi bi-check-circle"></i></button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Bordered Tabs -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+<!-- End #main -->

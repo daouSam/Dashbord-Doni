@@ -1,0 +1,6 @@
+<div class="leaderboard__profiles">
+    <article class="leaderboard__profile" *ngFor="let item of items" (click)="sendValues(item)">
+        <span class="leaderboard__name">{{item?.paysans?.nom}} {{item?.paysans?.prenom}}</span>
+        <span class="leaderboard__value">3<span>Req</span></span>
+    </article>    
+</div>

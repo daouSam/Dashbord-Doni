@@ -1,0 +1,4 @@
+class Paysans{
+
+}
+export {Paysans};

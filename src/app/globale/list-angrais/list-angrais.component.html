@@ -1,0 +1,76 @@
+<main id="main" class="main">
+
+
+    <!-- End Page Title -->
+
+    <section class="section dashboard">
+        <h3>Produits angrais</h3>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="['/globale/menu']">catégorie</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="['/globale/listAngrais']">Liste</a></li>
+            </ol>
+        </nav>
+        
+        <div class="row">
+
+            <!-- Left side columns -->
+            <div class="col-lg-12">
+                <div class="row">
+                    <!-- Top Selling -->
+                    <div class="col-12">
+                        <div class="card top-selling overflow-auto">
+
+                            <div class="filter">
+                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                    <li class="dropdown-header text-start">
+                                        <h6>Filter</h6>
+                                    </li>
+
+                                    <li><a class="dropdown-item" href="#">Today</a></li>
+                                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="card-body pb-0">
+                                <h5 class="card-title">Liste dees angrais</h5>
+
+                                <table class="table table-borderless">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">image</th>
+                                            <th scope="col">Nom</th>
+                                            <th scope="col">Prix</th>
+                                            <th scope="col">quantite</th>
+                                            <th scope="col">action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody *ngFor="let prod of produit">
+                                        <tr *ngIf="prod.categorie.type=='Engrais'">
+                                            <th scope="row">
+                                                <a href="#"><img src={{img}}{{prod.id}} alt=""></a>
+                                            </th>
+                                            <td><a href="#" class="text-primary fw-bold">{{prod.nomProduit}}</a></td>
+                                            <td>{{prod.prixKg}}</td>
+                                            <td class="fw-bold" [ngClass]="{'outofstock': prod.quantite === 30, 'lowstock': (prod.quantite > 31 && prod.quantite < 50),'instock': prod.quantite > 100}">{{prod.quantite}}</td>
+                                            <td class="icon">
+                                                <i routerLink="/globale/DetailAngrais/{{prod.id}}" class="bi bi-eye a" title="voir détail"></i>
+                                                <i class="bi bi-pencil c" routerLink="/globale/modifiAngrais/{{prod.id}}" title="modifier le produit"></i>
+                                                <i (click)="supprimer(prod.id)" class="bi bi-trash b" title="supprimer le produit"></i>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Top Selling -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+<!-- End #main -->

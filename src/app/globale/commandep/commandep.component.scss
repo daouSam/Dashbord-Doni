@@ -1,0 +1,48 @@
+.result {
+    color: green;
+    font-size: 14px;
+}
+
+.c {
+    color: red;
+    float: right;
+}
+
+.icon {
+    display: flex;
+    justify-content: space-between;
+}
+
+.a {
+    display: flex;
+    justify-content: space-around;
+}
+
+.d {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.cardgroup{
+    display: flex;
+    justify-content: left;
+    width: 100%;
+    .card{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-right: 5px;
+        .card-img-top{
+            width: 94%;
+            height: 100px;
+            border:1px solid #fff;
+            box-shadow: 10px 10px 5px #ccc;
+            -moz-box-shadow: 10px 10px 5px #ccc;
+            -webkit-box-shadow: 10px 10px 5px #ccc;
+            -khtml-box-shadow: 10px 10px 5px #ccc;
+        }
+        .card-body{
+            padding: 10px 5px 20px 5px;
+        }
+    }
+}

@@ -1,0 +1,48 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h5>commande annuler</h5>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="['/globale/paysans']">liste paysans</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="['/globale/detailPaysans', id]">détail du paysan</a></li>
+                <li class="breadcrumb-item"><a>commande annuler</a></li>
+            </ol>
+        </nav>
+    </div>
+    <!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Table with stripped rows -->
+                        <table class="table datatable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Paysan</th>
+                                    <th scope="col">Téléphone</th>
+                                    <th scope="col">Etat</th>
+                                    <th scope="col">Date</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let item of commandeAnnulerPaysans">
+                                <tr *ngIf="item.etatCommande=='annuler'">
+                                    <td>{{item.panier.paysans.prenom}} {{item.panier.paysans.nom}}</td>
+                                    <td>{{item.panier.paysans.telephone}}</td>
+
+                                    <td><span class="badge bg-danger ">{{item.etatCommande}} </span></td>
+                                    <td>{{item.date}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- End Table with stripped rows -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>

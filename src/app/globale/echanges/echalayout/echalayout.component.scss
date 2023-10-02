@@ -1,0 +1,8 @@
+$primary: rgba(23, 190, 187, .1);
+$secondary: rgba(240, 166, 202, .1);
+.container {
+    background: linear-gradient(120deg, $primary, $secondary);
+    overflow: hidden;
+    width: 100%;
+    // height: 80%;
+  }

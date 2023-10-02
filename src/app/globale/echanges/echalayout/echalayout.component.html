@@ -1,0 +1,14 @@
+<main id="main" class="main">
+    <div class="col-sm-12 container">
+        <div class="row">
+            <div class="col-sm-2">
+                
+                <app-echaside [items]="AllEcha"  (newItemEvent) ="GetChildData($event)"></app-echaside>
+            </div>
+            <div class="col-sm-10">
+                <app-echabody [DetailAll]="currMsgDis" (ResMsg) ="GetChildDataResMsg($event)"></app-echabody>
+                <!-- <router-outlet></router-outlet> -->
+            </div>
+        </div>
+    </div>
+</main>

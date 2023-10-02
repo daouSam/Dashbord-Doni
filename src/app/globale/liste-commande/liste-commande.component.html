@@ -1,0 +1,32 @@
+<main id="main" class="main">
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/globale/listeCommande']">liste des commandes</a></li>
+            <li class="breadcrumb-item"><a></a></li>
+        </ol>
+    </nav>
+    <div class="c">
+        <button type="button" class="btn btn-success" routerLink="/globale/listeAnnuler"><i class="bi bi-backspace-reverse-fill-star me-1"></i> Rejetter</button>
+    </div>
+    <h5>Les commandes</h5>
+    <!-- End Page Title -->
+    <section class="section">
+        <div class="row cardgroup">
+            <div class="card" style="width: 200px" *ngFor="let com of commande">
+                <div class="card-body">
+                    <div>
+                        <p><span class="result">{{com?.panier?.montant}}</span></p>
+                    </div>
+                    <div>
+                        <p><i class="bi bi-person"></i><span class="result">{{com?.panier?.paysans?.prenom}} {{com?.panier?.paysans?.nom}}</span> </p>
+                    </div>
+                    <div class="icon">
+                        <i class="b bi bi-check-circle" (click)="update(com.id)" title="valider la commande"></i>
+                        <i class="bi bi-ticket-detailed" (click)="detailcommande(com.id)" title="voir le détail"></i>
+                        <i class="c bi bi-backspace-reverse-fill" (click)="annuler(com.id)" title="annuler la commande"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

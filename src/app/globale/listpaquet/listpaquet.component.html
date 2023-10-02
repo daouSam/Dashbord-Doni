@@ -1,0 +1,63 @@
+<main id="main" class="main">
+  <nav class="navbg">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/globale/paquet']">liste paquet</a></li>
+    </ol>
+    <button class="btn boutonajout" (click)="ajoutpage()">new paquet</button>
+  </nav>
+  <div class="row classglobale">
+    <div [ngClass]="[divclass]" id="divclassid">
+      <div class="row headth">
+        <div class="col">Image</div>
+        <div class="col">Paquet</div>
+        <div class="col">description</div>
+        <div class="col">prix</div>
+        <div class="col">Produits</div>
+        <div class="col">action</div>
+      </div>
+      <div class="list-scroll-y my-customlist-scrollbar">
+        <div class="row" *ngFor="let items of paquets">
+          <div class="col" style="height: 20px; width: 20px;">
+            <img style="height: 20px; width: 40px;" src={{items.photo}} alt="paquet image">
+          </div>
+          <div class="col">{{items?.nompaquet}}</div>
+          <div class="col">{{items?.descriptiont}}</div>
+          <div class="col">{{items?.prixpaquet}}</div>
+          <div class="col lstp" (click)="tdclick(items)">Les produits</div>
+          <div class="col">
+            <div class="row">
+              <div class="col-sm-4">
+                <button (click)="supPaquet(items)" class="btn btn-outline-danger">x</button>
+              </div>
+              <div class="col-sm-4">
+                <button class="btn btn-outline-secondary">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div [ngClass]="detailclass" id="divdetail">
+      <div class="container">
+        <div class="row headproduit">
+          <div class="col-md-6">Nom du paquet: <b>{{nompaquet}}</b></div>
+          <div class="col-md-6">prix: <b>{{prixpaquet}}</b></div>
+        </div>
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+          <table>
+            <tr>
+              <th>Nom produit</th>
+              <th>Image</th>
+              <th>Quantite</th>
+            </tr>
+            <tr *ngFor="let item of produitpanier">
+              <td>{{item?.produit?.nomProduit}}</td>
+              <td><img class="imgtd" src={{item.produit?.photo}} alt="image"></td>
+              <td>{{item?.quantite}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

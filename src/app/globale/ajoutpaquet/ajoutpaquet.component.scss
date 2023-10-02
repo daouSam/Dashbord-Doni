@@ -1,0 +1,40 @@
+.resultat1{
+    background: red;
+}
+.header4{
+    font-family: 'Tienne';
+    font-size: medium;
+}
+.listrows{
+    background: #ccc;
+}
+.listrow{
+    background: #F4F6F6;
+}
+
+hr {
+    border: 0 solid #eeedef;
+    border-top-width: 1px;
+    height: 0;
+    margin: 30px auto;
+    clear: both;
+    display: block;
+    width: 400px;
+    position: relative;
+}
+.supp{
+    display: flex;
+    justify-content: center;
+    color: red;
+}
+.list-group-item-secondary{
+    padding: 3px 3px;
+}
+.supp:hover{
+    background-color: #ccc;
+    color: #000;
+    font-size: medium;
+    cursor: pointer;
+    z-index: 10;
+}
+  

@@ -1,0 +1,95 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h5>les informations du paysan</h5>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="['/globale/listeCommande']">liste commande</a></li>
+                <li class="breadcrumb-item"><a>détail commande</a></li>
+            </ol>
+        </nav> 
+    </div>
+    <!-- End Page Title -->
+
+    <section class="section profile">
+        <div class="row">
+            <div class="col-xl-3">
+
+                <div class="card">
+                    <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+                        <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                        <div class="social-links mt-2">
+                            <h6>{{commande?.panier?.paysans?.nom}} {{commande?.panier?.paysans?.prenom}}</h6>
+                        </div>
+                        <div class="d-flex flex-row align-items-center buttongroup">
+                            <a routerLink="/globale/paysansValide/{{commande?.panier?.paysans?.id}}">en cours..</a>
+                            <a routerLink="/globale/paysansCommandeValide/{{commande?.panier?.paysans?.id}}">Valider</a>
+                            <a routerLink="/globale/paysansCommandeAnnuler/{{commande?.panier?.paysans?.id}}">Annuler</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                </div>
+
+            </div>
+
+            <div class="col-xl-8">
+                <div class="card">
+                    <div class="card-body pt-3">
+                        <!-- Bordered Tabs -->
+                        <div class="tab-content pt-2">
+                            <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                                <h5 class="card-title">Détail de la commande</h5>
+                                <ul>
+                                    <li>Etats: {{commande?.etatCommande}}</li>
+                                    <li>Montant payer: {{commande?.montantPayer}}</li>
+                                    <li>Reste: {{commande?.reste}}</li>
+                                    <li>dépuis: {{commande?.date | date: 'dd/MM/YYYY'}}</li>
+                                </ul>
+                                <h5 class="card-title">lignes de commande</h5>
+
+                                <div class="row">
+                                    <div class="card-body pb-0">
+                                        <table class="table table-borderless">
+                                                                
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">image</th>
+                                                    <th scope="col">Nom</th>
+                                                    <th scope="col">Quantite comandé</th>
+                                                    <th scope="col">unite</th>
+                                                    <th scope="col">Montant</th>
+                                                    <th scope="col">action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody *ngFor="let item of detailcom">
+                                                <th scope="row">
+                                                    <a [routerLink]="['/energie/detail', id]"><img class="imgtable" src="{{img}}{{item?.produit?.id}}" alt=""></a>
+                                                </th>
+                                                <td class="fw-bold">{{item.produit.nomProduit}}</td>
+                                                <td>{{item.quantiteAchete}}</td>
+                                                <td><a href="#" class="text-primary fw-bold">{{item.unite}}</a></td>
+                                                <td class="fw-bold">{{item.montant}}</td>
+                                                <td class="fw-bold">
+                                                    <div class="icon d-flex">
+                                                        <i class="b bi bi-check-circle" (click)="update(item.id)" title="valider la commande"></i>
+                                                        <i class="c bi bi-backspace-reverse-fill" (click)="annuler(item.id)" title="annuler la commande"></i>
+                                                    </div>
+                                                </td>
+                                            </tbody>
+                                        </table>
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Bordered Tabs -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>

@@ -1,0 +1,465 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Modifie angrais</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="['/globale/menu']">catégorie</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="['/globale/listAngrais']">Liste</a></li>
+                <li class="breadcrumb-item"><a>modifier </a></li>
+            </ol>
+        </nav>
+    </div>
+    <!-- End Page Title -->
+    <section class="section">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+
+                <h5 class="card-title">formulaire</h5>
+
+                <!-- Horizontal Form -->
+                <form #editForm="ngForm" *ngIf="modifiProduit">
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Nom</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputText" ngModel #nomProduit="ngModel" [(ngModel)]="modifiProduit.nomProduit" name="nomProduit">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Description</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="description" ngModel #description="ngModel" [(ngModel)]="modifiProduit.description" id="inputText ">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Prix</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="prixKg" ngModel #prixKg="ngModel" [(ngModel)]="modifiProduit.prixKg" id="inputText ">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">quantite</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="quantite" ngModel #categorie="ngModel" [(ngModel)]="modifiProduit.quantite" id="inputPassword ">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="form-group">
+                            <label>Categorie</label>
+                            <select id="profil" class="form-control" name="categorie" ngModel #categorie="ngModel" [(ngModel)]="modifiProduit.categorie">
+                            <option value="">--Selectionner une categorie--</option>
+                            <option *ngFor="let item of listCategorie" value="{{item.id}}">{{item.type}}</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="form-group">
+                            <label>Caractéristiques</label>
+                            <button type="button" class="btn btn-primary" *ngIf="!modifiProduit.cproduit" data-bs-toggle="modal" data-bs-target="#basicModal" class="btn btn-outline-success">caractéristiques</button>
+                            <button type="button" class="btn btn-primary" *ngIf="modifiProduit.cproduit" data-bs-toggle="modal" data-bs-target="#basicModal2" class="btn btn-outline-success">caractéristiques</button>                            
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-10 offset-sm-2">
+                        </div>
+                        <div class="form-row">
+                            <div class="mb-2">
+                                <label for="photo1" class="form-label ">Insérer une photo</label>
+                                <input #file type="file" id="photo1" class="form-control" [(ngModel)]="modifiProduit.photo" #photos>
+                                <!-- <img [src]="imgURL " height="100 " *ngIf="imgURL "> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" (click)="onUpdate()" class="btn btn-primary">Ajouter</button>                        
+                    </div>
+                </form>
+                <!-- End Horizontal Form -->
+            </div>
+        </div>
+    </section>  
+    <!-- modal start template -->
+    <div class="modal fade" id="basicModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">                        
+                    <!-- Horizontal Form -->
+                    <form #form="ngForm" (ngSubmit)="ajoutCaracteristique(form)">
+                        <div class="container col-lg-12">
+                            <div class="row">
+                                <h6>Caractéristiques végétatives</h6>
+                                <div class="row">
+                                  <div class="col">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label>cycle</label>
+                                            <input type="text" class="form-control" name="cycle" ngModel #cycle="ngModel">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label>semis-maturité</label>
+                                            <input type="text"  class="form-control" name="semimat" ngModel #semimat="ngModel" >
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label>hauteur de la plante</label>
+                                            <input type="text"  class="form-control" name="hauteur" ngModel #hauteur="ngModel" >
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label>hauteur d'insertion de l'epi</label>
+                                            <input type="text"  class="form-control" name="hautepi" ngModel #hautepi="ngModel" >
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label>longueur de l'epi</label>
+                                                <input type="text"  class="form-control" name="logepi" ngModel #logepi="ngModel" >
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label>diamètre de l'epi</label>
+                                                <input type="text"  class="form-control" name="dreepi" ngModel #dreepi="ngModel" >
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label>bon recouvrement des spathes</label>
+                                                <input type="text"  class="form-control" name="brecouvmnt" ngModel #brecouvmnt="ngModel" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <h6>Caractéristiques du Grain</h6>
+                                <div class="row">
+                                  <div class="col">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label>type</label>
+                                            <input type="text"  class="form-control" name="typeg" ngModel #typeg="ngModel" >
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label>poids de 1000 grains</label>
+                                            <input type="text"  class="form-control" name="poids" ngModel #poids="ngModel" >
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label>couleur</label>
+                                                <input type="text"  class="form-control" name="couleur" ngModel #couleur="ngModel" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <h6>Caractéristiques Particulières</h6>
+                                <div class="row">
+                                  <div class="col">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label>résistance à la verse</label>
+                                            <input type="text"  class="form-control" name="rverse" ngModel #rverse="ngModel" >
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label>résistance aux maladies</label>
+                                            <input type="text"  class="form-control" name="rmaladie" ngModel #rmaladie="ngModel" >
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label>helminthosporiose</label>
+                                            <input type="text"  class="form-control" name="helmintho" ngModel #helmintho="ngModel" >
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label>rouille, curvuloriose</label>
+                                            <input type="text"  class="form-control" name="rouicurvu" ngModel #rouicurvu="ngModel" >
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label>striure</label>
+                                                <input type="text"  class="form-control" name="striure" ngModel #striure="ngModel" >
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label>résistanse à la sécheresse</label>
+                                                <input type="text"  class="form-control" name="rseche" ngModel #rseche="ngModel" >
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label>résistance au striga</label>
+                                                <input type="text"  class="form-control" name="rstriga" ngModel #rstriga="ngModel" >
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label>caractéristiques culinaires</label>
+                                                <input type="text"  class="form-control" name="cculinai" ngModel #cculinai="ngModel" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <h6>Aire d'adaptation et productivité</h6>
+                                <div class="row">
+                                  <div class="col">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label>isohyète</label>
+                                            <input type="text"  class="form-control" name="isohyete" ngModel #isohyete="ngModel" >
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label>productivité en station</label>
+                                            <input type="text"  class="form-control" name="pstation" ngModel #pstation="ngModel" >
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label>productivité en millieu réel</label>
+                                                <input type="text"  class="form-control" name="plieureel" ngModel #plieureel="ngModel" >
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label>zone de culture</label>
+                                                <input type="text"  class="form-control" name="zculture" ngModel #zculture="ngModel" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">annuler</button>
+                            <button type="submit" class="btn btn-primary">Ajouter caractéristique</button>
+                        </div>
+                    </form>
+                    <!-- End Horizontal Form -->                            
+                </div>
+            </div>
+        </div> 
+    </div>
+    <div class="modal fade" id="basicModal2" *ngIf="cproduit" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">                        
+                    <!-- Horizontal Form -->
+                    <form #form2="ngForm">
+                        <div class="container col-lg-12">
+                            <h5>formulaire deux</h5>
+                            <div class="row">
+                                <h6>Caractéristiques végétatives</h6>
+                                <div class="row">
+                                  <div class="col">
+                                    <div class="row">
+                                        <div class="form-group ">
+                                            <label>cycle</label>
+                                            <input type="text" class="form-control" name="cycle" ngModel #cproduit.cycle="ngModel" [(ngModel)]="modifiProduit.cproduit.cycle">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label>semis-maturité</label>
+                                            <input type="text"  class="form-control" name="semimat" ngModel #semimat="ngModel" [(ngModel)]="modifiProduit.cproduit.semimat" >
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label>hauteur de la plante</label>
+                                            <input type="text"  class="form-control" name="hauteur" ngModel #hauteur="ngModel" [(ngModel)]="modifiProduit.cproduit.hauteur" >
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label>hauteur d'insertion de l'epi</label>
+                                            <input type="text"  class="form-control" name="hautepi" ngModel #hautepi="ngModel" [(ngModel)]="modifiProduit.cproduit.hautepi" >
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label>longueur de l'epi</label>
+                                                <input type="text"  class="form-control" name="logepi" ngModel #logepi="ngModel" [(ngModel)]="modifiProduit.cproduit.logepi" >
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label>diamètre de l'epi</label>
+                                                <input type="text"  class="form-control" name="dreepi" ngModel #dreepi="ngModel" [(ngModel)]="modifiProduit.cproduit.dreepi" >
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label>bon recouvrement des spathes</label>
+                                                <input type="text"  class="form-control" name="brecouvmnt" ngModel #brecouvmnt="ngModel" [(ngModel)]="modifiProduit.cproduit.brecouvmnt" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <h6>Caractéristiques du Grain</h6>
+                                <div class="row">
+                                  <div class="col">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label>type</label>
+                                            <input type="text"  class="form-control" name="typeg" ngModel #typeg="ngModel" [(ngModel)]="modifiProduit.cproduit.typeg" >
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label>poids de 1000 grains</label>
+                                            <input type="text"  class="form-control" name="poids" ngModel #poids="ngModel" [(ngModel)]="modifiProduit.cproduit.poids" >
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label>couleur</label>
+                                                <input type="text"  class="form-control" name="couleur" ngModel #couleur="ngModel" [(ngModel)]="modifiProduit.cproduit.couleur" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <h6>Caractéristiques Particulières</h6>
+                                <div class="row">
+                                  <div class="col">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label>résistance à la verse</label>
+                                            <input type="text"  class="form-control" name="rverse" ngModel #rverse="ngModel" [(ngModel)]="modifiProduit.cproduit.rverse" >
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label>résistance aux maladies</label>
+                                            <input type="text"  class="form-control" name="rmaladie" ngModel #rmaladie="ngModel" [(ngModel)]="modifiProduit.cproduit.rmaladie" >
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label>helminthosporiose</label>
+                                            <input type="text"  class="form-control" name="helmintho" ngModel #helmintho="ngModel" [(ngModel)]="modifiProduit.cproduit.helmintho" >
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label>rouille, curvuloriose</label>
+                                            <input type="text"  class="form-control" name="rouicurvu" ngModel #rouicurvu="ngModel" [(ngModel)]="modifiProduit.cproduit.rouicurvu" >
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label>striure</label>
+                                                <input type="text"  class="form-control" name="striure" ngModel #striure="ngModel" [(ngModel)]="modifiProduit.cproduit.striure" >
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label>résistanse à la sécheresse</label>
+                                                <input type="text"  class="form-control" name="rseche" ngModel #rseche="ngModel" [(ngModel)]="modifiProduit.cproduit.rseche" >
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label>résistance au striga</label>
+                                                <input type="text"  class="form-control" name="rstriga" ngModel #rstriga="ngModel" [(ngModel)]="modifiProduit.cproduit.rstriga" >
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group ">
+                                                <label>caractéristiques culinaires</label>
+                                                <input type="text"  class="form-control" name="cculinai" ngModel #cculinai="ngModel" [(ngModel)]="modifiProduit.cproduit.cculinai" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <h6>Aire d'adaptation et productivité</h6>
+                                <div class="row">
+                                  <div class="col">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label>isohyète</label>
+                                            <input type="text"  class="form-control" name="isohyete" ngModel #isohyete="ngModel" [(ngModel)]="modifiProduit.cproduit.isohyete" >
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label>productivité en station</label>
+                                            <input type="text"  class="form-control" name="pstation" ngModel #pstation="ngModel" [(ngModel)]="modifiProduit.cproduit.pstation" >
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label>productivité en millieu réel</label>
+                                                <input type="text"  class="form-control" name="plieureel" ngModel #plieureel="ngModel" [(ngModel)]="modifiProduit.cproduit.plieureel" >
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label>zone de culture</label>
+                                                <input type="text"  class="form-control" name="zculture" #zculture="ngModel" [(ngModel)]="modifiProduit.cproduit.zculture" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ok</button>
+                            <!-- <button type="submit"  (click)="onUpdateCaract()" class="btn btn-primary">Ajouter caractéristique</button> -->
+                        </div>
+                    </form>
+                    <!-- End Horizontal Form -->                            
+                </div>
+            </div>
+        </div> 
+    </div>
+</main>
+<!-- End #main -->p>

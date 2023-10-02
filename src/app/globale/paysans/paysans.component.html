@@ -1,0 +1,73 @@
+<main id="main" class="main">
+    <!-- End Page Title -->
+    <h5>Liste Des Paysans</h5>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item textligne">Veuillez cliquer <span  (click)="exportexcele()" class="ici" title="exporter la liste"> ici </span> pour exporter la liste des informations nécessaires pour un paysan de se connecter aux applications mobiles Doni Doni</li>
+        </ol>
+        <div class="tools">
+            <form #datacoahpys="ngForm" (ngSubmit)="cherche(datacoahpys)">
+                <div class="row">
+                    <div class="col-2">
+                        <label>Sélectionner coach</label>
+                        <select class="form-select" name="coach" ngModel #coach="ngModel">
+                            <option value="">--coach--</option>
+                            <option *ngFor="let item of listCoach" value="{{item.id}}">{{item.prenom}} {{item.nom}}</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <label>date debut</label>
+                        <input class="form-control" type="date" name="dateD" ngModel #dateD="ngModel" autocomplete="off " placeholder="Rechercher">
+                    </div>
+                    <div class="col-2">
+                        <label>date fin</label>
+                        <input class="form-control" type="date" name="dateF" ngModel #dateF="ngModel" autocomplete="off " placeholder="Rechercher">
+                    </div>
+                    <div class="col-2">
+                        <button type="submit">Cherche</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </nav>
+    <section class="section profile">
+        <div class="row">
+            <div class="col-xl-2" *ngFor="let pay of paysans">
+                <div class="card">
+                    <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+                        <img class="imgpointer" title="voir l'activité et information" src="assets/img/profile-img.jpg" routerLink="/globale/detailPaysans/{{pay.id}}" alt="Profile" class="rounded-circle">
+                        <h6>{{pay?.nom}} {{pay?.prenom}}</h6>
+                        <i (click)="supprimer(pay.id)" class="bi bi-trash b" title="supprimer le paysan"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section style="display: none;">
+        <table id="tablepaysans" class="table table-borderless">
+            <thead>
+                <tr class="tabl ">               
+                    <th scope="col ">Prénom</th>
+                    <th scope="col ">Nom</th>
+                    <th scope="col ">Téléphone</th>
+                    <th scope="col ">Identifiant</th>
+                    <th scope="col ">Mot de passe</th>
+                    <th scope="col ">Région</th>
+                    <th scope="col ">Cercle</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let pay of paysans ">
+                <tr>                   
+                    <td><a>{{pay?.prenom}}</a></td>
+                    <td>{{pay?.nom}}</td>
+                    <td>{{pay?.telephone}}</td>
+                    <td>{{pay?.login}}</td>                
+                    <td>{{pay?.password}}</td>
+                    <td>{{pay?.cercleRegion?.region?.nomRegion}}</td>
+                    <td>{{pay?.cercleRegion?.nomCercle}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+<!-- End #main -->

@@ -1,0 +1,129 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h5>Liste des commandes effectuées</h5>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Consommation</a>
+                </li>
+                <li class="breadcrumb-item">Sémence</li>
+                <li class="breadcrumb-item active">Angrais</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Pills Tabs -->
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Consommation</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Sémence</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Angrais</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-energie" type="button" role="tab" aria-controls="pills-energie" aria-selected="false">Energie</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-piscicult" type="button" role="tab" aria-controls="pills-piscicult" aria-selected="false">Pisciculture</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content pt-2" id="myTabContent">
+                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="home-tab">
+                                <!-- End Page Title -->
+                                <section class="section dashboard">
+                                    <div class="row">
+                                        <!-- Left side columns -->
+                                        <div class="col-lg-12">
+                                            <div class="row">
+                                                <!-- Sales Card -->
+                                                <div class="col-12">
+                                                    <div class="card top-selling overflow-auto">
+
+                                                        <div class="filter">
+                                                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                                                <li class="dropdown-header text-start">
+                                                                    <h6>Filter</h6>
+                                                                </li>
+
+                                                                <li><a class="dropdown-item" href="#">Today</a></li>
+                                                                <li><a class="dropdown-item" href="#">This Month</a></li>
+                                                                <li><a class="dropdown-item" href="#">This Year</a></li>
+                                                            </ul>
+                                                        </div>
+
+                                                        <div class="card-body pb-0">
+                                                            <div class="md-form mt-0" id="filter">
+                                                                <input class="form-control mr-sm-4 r" type="text" [(ngModel)]="searchText" autocomplete="off " placeholder="Rechercher">
+                                                            </div><br>
+
+                                                            <table class="table table-borderless">
+                                                                
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th scope="col">image</th>
+                                                                        <th scope="col">Prenom paysan</th>
+                                                                        <th scope="col">Nom</th>
+                                                                        <th scope="col">Date</th>
+                                                                        <th scope="col">Montant</th>
+                                                                        <th scope="col">Montant Payer</th>
+                                                                        <th scope="col">Reste</th>
+                                                                        <th scope="col">Etat</th>
+                                                                        <th scope="col">Payement</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody *ngFor="let item of commandeValider | filter:searchText ">
+                                                                    <tr>
+                                                                        <th scope="row">
+                                                                            <a href="#"><img src="../../assets/img/carrotte.jpg" alt=""></a>
+                                                                        </th>
+
+                                                                        <td class="fw-bold">{{item.panier.paysans?.prenom}}</td>
+                                                                        <td>{{item.panier.paysans?.nom}}</td>
+                                                                        <td><a href="#" class="text-primary fw-bold">{{item.date}}</a></td>
+
+                                                                        <td class="fw-bold">{{item.panier.montant}}</td>
+                                                                        <td class="fw-bold">{{item.payer}}</td>
+                                                                    
+                                                                        <td class="fw-bold">{{item.reste}}</td>
+                                                                        <td class="fw-bold eta"> <span class="badge bg-success">{{item.etatCommande}}</span></td>
+                                                                        <td class="">
+                                                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center text-success small pt-1 fw-bold ">
+                                                                                <i class="bi bi-currency-dollar"routerLink="/globale/payement/{{item.id}} " data-bs-toggle="modal" ></i>
+                                                                            </div>                                                                   
+                                                                        </td>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- End Top Selling -->
+
+                                            </div>
+                                        </div>
+                                        <!-- End Left side columns -->
+                                    </div>
+                                </section>
+                                <!-- End #main -->
+                            </div>
+                            
+                            
+                        </div>
+                        <!-- End Pills Tabs -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>

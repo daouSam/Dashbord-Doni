@@ -1,0 +1,126 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Campagne</h1>
+        <nav>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal" class="btn btn-outline-success">Ajouter</button>
+
+            <div class="modal fade" id="basicModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Campagne</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">formulaire</h5>
+
+                                    <!-- Horizontal Form -->
+                                    <form>
+                                        <div class="row mb-3">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Your Name</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="inputText">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Your Name</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="inputText">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Your Name</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="inputText">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                                            <div class="col-sm-10">
+                                                <input type="email" class="form-control" id="inputEmail">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                                            <div class="col-sm-10">
+                                                <input type="password" class="form-control" id="inputPassword">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-sm-10 offset-sm-2">
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                    <!-- End Horizontal Form -->
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">reset</button>
+                            <button type="button" class="btn btn-primary">Ajouter</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <main id="main" class="main">
+                    <!-- End Page Title -->
+
+                </main>
+                <!-- End #main -->
+            </div>
+        </nav>
+    </div>
+    <!-- End Page Title -->
+
+    <section class="section">
+        <div class="row align-items">
+
+
+
+            <!-- End Card with header and footer -->
+
+            <!-- Card with an image on left -->
+            <div class="card mb-3" *ngFor="let campa of campagne">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="assets/img/marraichage.jpeg" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{campa.annee}}</h5>
+                            <p class="card-text">{{campa.description}}</p>
+                            <div class="icon">
+                                <i class="bi bi-trash b " (click)="supprimer(campa.id) "></i>
+                                <i class="bi bi-pencil a "></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Card with an image on left -->
+
+        </div>
+
+
+        <div class="col-lg-3 ">
+
+            <!-- Card with an image on top -->
+
+            <!-- End Card with titles, buttons, and links -->
+
+            <!-- Special title treatmen -->
+
+
+        </div>
+
+
+    </section>
+
+</main>

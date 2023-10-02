@@ -1,0 +1,60 @@
+<!-- <div>
+  <div class="conversation ion-padding">
+   <div class="row chat-section" id="chat">
+     <div class="col-sm chat">
+       <div *ngFor="let item of DetailAll" [ngClass]="{'yours messages': item.reqres, 'mine messages': !item.reqres}"> 
+         <div [ngClass]="{'message other last-message-other': item.reqres, 'message': !item.reqres}">
+             {{item?.contenu}}
+         </div>
+       </div>
+     </div>
+    </div>
+    <form #formMsg="ngForm">
+      <div class="row message-input"> 
+        <div class="col-lg-6">
+          <input placeholder="ecrire votre message ..." name="contenu" ngModel #contenu="ngModel">      
+          <button class="send-button">
+            <span (click)="sendMsgMy(formMsg)">bouton envoie</span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div> -->
+
+
+
+
+<div class='container'>
+  <h5>Requête et suggestions du client</h5>
+  <div class='chatbox conversation'>
+    <div class="row chat-section" id="chat">
+      <div class="col-sm chat">
+        <div *ngFor="let item of DetailAll" [ngClass]="{'yours': item.reqres, 'mine messages': !item.reqres}"> 
+          <div [ngClass]="{' other': item.reqres, 'message': !item.reqres}">
+              {{item?.contenu}}
+          </div>
+        </div>
+      </div>
+     </div>
+  </div>
+  <div>    
+  </div>
+  <!-- <form #formMsg="ngForm">
+    <div class="row message-input"> 
+      <div class="col-lg-6">
+        <input placeholder="ecrire votre message ..." name="contenu" ngModel #contenu="ngModel">      
+        <button class="send-button">
+          <span (click)="sendMsgMy(formMsg)">bouton envoie</span>
+        </button>
+      </div>
+    </div>
+  </form> -->
+  <div class="form-outline w-100 mb-4">
+    <form #formMsg="ngForm">      
+      <textarea class="form-control" name="contenu" id="inputmsg" ngModel #contenu="ngModel" rows="3"></textarea>
+      <button class="btn btn-primary send-button" (click)="sendMsgMy(formMsg)">
+        <span>Bouton envoie</span>
+      </button>
+    </form>
+</div>

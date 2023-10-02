@@ -1,0 +1,170 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Ajouter Coatch</h1>
+
+    </div>
+    <!-- End Page Title -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal" class="btn btn-outline-success">Ajouter</button>
+    <li class="breadcrumb-item textligne">Veuillez cliquer <span  (click)="exportexcele()" class="ici" title="exporter la liste"> ici </span> pour exporter la liste des informations nécessaires pour un paysan de se connecter aux applications mobiles Doni Doni</li>
+
+
+    <div class="modal fade" id="basicModal" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Coach</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">formulaire</h5>
+
+                            <!-- Horizontal Form -->
+                            <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+                                <div class="row mb-3">
+                                    <label for="" class="col-sm-4 col-form-label">Nom</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="" name="nom" ngModel>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="" class="col-sm-4 col-form-label">Prénom</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="prenom" ngModel id="">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="" class="col-sm-4 col-form-label">Date de naissance</label>
+                                    <div class="col-sm-8">
+                                        <input type="date" class="form-control" name="dateNaissance" ngModel id="">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="" class="col-sm-4 col-form-label">Téléphone</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="telephone" ngModel id="">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="" class="col-sm-4 col-form-label">login</label>
+                                    <div class="col-sm-8">
+                                        <input type="email" class="form-control" name="login" ngModel id="">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="" class="col-sm-4 col-form-label">mot de passe</label>
+                                    <div class="col-sm-8">
+                                        <input type="password" class="form-control" name="password" ngModel id="">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="" class="col-sm-4 col-form-label">adresse</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="adresse" ngModel id="">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="" class="col-sm-4 col-form-label">Sexe</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-select" name="sexe" id=""  ngModel>
+                                            
+                                            <option value="Homme">Homme</option>
+                                            <option value="Femme">Femme</option>
+                                            
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="row mb-3">
+                                    <!-- <div class="form-group "> -->
+                                        <label class="col-sm-4 col-form-label">Statut</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-select" id="type" name="statut" ngModel>
+                                                <option value="Celibataire">Celibataire</option>
+                                                <option value="Mariée">Mariée</option>
+                                                <option value="Veuf">Veuf</option>
+                                        
+                                              </select>
+                                        </div>
+                                    <!-- </div> -->
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-sm-8 offset-sm-2">
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                                </div>
+                            </form>
+                            <!-- End Horizontal Form -->
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <main id="main" class="main">
+        </main>
+        <!-- End #main -->
+    </div>
+    <section class="section">
+
+
+        <div class="card">
+            <div class="card-body">
+
+
+                <!-- Default Table -->
+                <table id="tablepaysans" class="table">
+                    <thead class="a">
+                        <tr>
+                            <th scope="col">Nom</th>
+                            <th scope="col">prenom</th>
+
+                            <th scope="col">telephone</th>
+                            <th scope="col"> login</th>
+                            <th scope="col"> sexe</th>
+
+                            <th scope="col"> adresse</th>
+                            <th scope="col"> Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of coatch">
+                            <th scope="row">{{item.nom}}</th>
+                            <td>{{item.prenom}}</td>
+
+                            <td>{{item.telephone}}</td>
+                            <td>{{item.login}}</td>
+                            <td>{{item.sexe}}</td>
+
+                            <td>{{item.adresse}}</td>
+                            <td class="icon">
+                                <i routerLink="/globale/coatchDetail/{{item.id}} " class="bi bi-eye a "></i>
+                                <i class="bi bi-pencil c " routerLink="/globale/coatchModifi/{{item.id}} "></i>
+                                <i class="bi bi-trash b " (click)="supprimer(item.id)"></i>
+                            </td>
+
+                        </tr>
+
+
+
+
+                    </tbody>
+                </table>
+                <!-- End Default Table Example -->
+            </div>
+        </div>
+    </section>
+
+    </main>

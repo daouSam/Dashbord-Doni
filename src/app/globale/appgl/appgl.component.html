@@ -1,0 +1,124 @@
+<header id="header" class="header  a fixed-top d-flex align-items-center">
+    <div class="d-flex align-items-center justify-content-between">
+        <div class="imgdiv">
+            <a [routerLink]="['/globale/accueil']" class="logo d-flex align-items-center">
+                <img class="imglogo" src="assets/img/dounkafa_logo.png" alt="">
+            </a>
+        </div>
+        <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div>
+    <!-- End Logo -->
+    <div class="search-bar">
+        <form class="search-form d-flex align-items-center" method="POST" action="#">
+            <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+            <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+        </form>
+    </div>
+    <div class="d-flex align-items-center justify-content-center ">
+        <a [routerLink]="['/globale/accueil']" class="logo d-flex align-items-end">
+            <span class="d-none d-lg-block">Doni Doni</span>
+        </a>
+    </div>
+    <div class="d-flex align-items-center justify-content-center ">
+        
+            <button type="button" (click)="logOut()" class="btn btn-danger">Deconnecter</button>
+       
+    </div>
+    <!-- End Search Bar -->
+    
+    <!-- End Icons Navigation -->
+</header>
+<!-- End Header -->
+<aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav b" id="sidebar-nav">
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/globale/accueil">
+                <i class="bi bi-grid"></i>
+                <span>Accueil</span>
+            </a>
+        </li><br>
+        <!-- End Dashboard Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span> Gestion Produits</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a routerLink="/globale/menu">
+                        <i class="bi bi-circle"></i><span>liste Catégorie</span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/globale/ajoutProduit">
+                        <i class="bi bi-circle"></i><span>Ajouter Produits</span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/globale/paquet">
+                        <i class="bi bi-circle"></i><span>Créer un paquet</span>
+                    </a>
+                </li>
+            </ul>
+        </li><br>
+        <!-- End Components Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" routerLink="/globale/paysans" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-gem"></i><span>Gestion Paysans</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+        </li><br>
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-journal-text"></i><span>Gestion Commande</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a routerLink="/globale/listeCommande">
+                        <i class="bi bi-circle"></i><span> Commande en cours</span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/globale/panier">
+                        <i class="bi bi-circle"></i><span>Commande valider</span>
+                    </a>
+                    <a routerLink="/globale/rejet">
+                        <i class="bi bi-circle"></i><span>Commande Acheter</span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/globale/commdp">
+                        <i class="bi bi-circle"></i><span>Commande Paquet</span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/globale/commdpv">
+                        <i class="bi bi-circle"></i><span>Commande Paquet Histo</span>
+                    </a>
+                </li>
+            </ul>
+        </li><br>
+        <!-- End Forms Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" routerLink="/globale/campagne" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-layout-text-window-reverse"></i><span>Gestion campagne </span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="tables-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+            </ul>
+        </li><br>
+        <!-- End Tables Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" routerLink="/globale/coatch">
+                <i class="bi bi-person"></i>
+                <span>Gestion Coatch</span>
+            </a>
+        </li>
+        <!-- End echanges Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" routerLink="/globale/echanges">
+                <i class="bi bi-person"></i>
+                <span>Gestion Messages</span>
+            </a>
+        </li>
+    </ul>
+</aside>
+<router-outlet></router-outlet>
+<!-- End Footer -->

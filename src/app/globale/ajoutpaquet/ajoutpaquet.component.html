@@ -1,0 +1,94 @@
+<main id="main" class="main ">
+  <div class="row">
+    <nav>
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a [routerLink]="['/globale/paquet']">liste paquet</a></li>
+          <li class="breadcrumb-item"><a>ajout paquet</a></li>
+      </ol>
+    </nav>
+    <div class="col-md-6">
+      <form #form="ngForm">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="nomProduit">Nom du paquet</label>
+            <input type="text" name="nompaquet" ngModel class="form-control" id="nomProduit" placeholder="nom produit">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="descp">la description du paquet</label>
+            <input type="text" name="descriptiont" ngModel class="form-control" id="descp" placeholder="">
+          </div>
+          <div class="form-group col-md-6">
+            <div class="form-row">
+              <div class="mb-2">
+                <!-- <label for="photo1" class="form-label">Insérer une photo</label> -->
+                <!-- <input #file type="file" id="photo1" class="form-control" ngModel name="photo1" (change)="onFileChange($event)" #photos> -->
+                  <img [src]="src" *ngIf="src"><br><br>
+                  <input type="file"  class="form-control" [imageToDataUrl]="options"
+                  (imageSelected)="selected($event)">
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <img [src]="imageSrc" *ngIf="imageSrc" style="height: 100px; width:150px">
+            <!-- <img src="./../../../assets/img/not-found.svg" height="100">             -->
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="prixp">Prix du paquet</label>
+          <input type="number" name="prixpaquet" ngModel class="form-control" min="1" id="prixp" placeholder="100 - 10.0000.000.000">
+        </div>
+        <hr>
+        <div class="form-group col-md-6">
+          <label for="exampleFormControlSelect2">choisissez les produits du paquets</label>
+          <select class="form-control" name="produit" ngModel id="exampleFormControlSelect2">
+            <option value="" selected> --- choisi le produit ---</option>
+            <option *ngFor="let item of produit" [ngValue]="item" >{{item?.nomProduit}} {{item?.prixKg}} {{item?.quantite}}</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="">Quantité</label>
+          <input type="text"  name="quantite" min="1" ngModel class="form-control">
+        </div>
+        <button type="button" class="btn btn-primary" (click)="ajoutpaquet(form)">ajouter le produit</button>&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-primary" (click)="validerPaquet(form)">valider le paquet</button>
+      </form>
+    </div>
+    <div class="col-md-6 resultat">
+      <article>
+        <div class="row">
+          <h4 class="header4">Liste des produits pour le nouveau paquet</h4>
+        </div>
+        <div class="container">
+          <div class="row listrows">
+            <div class="col-sm">
+              Nom du produit
+            </div>
+            <div class="col-sm">
+              Quantité Sélectionné
+            </div>
+            <div class="col-sm-2">
+              Prix unitaire
+            </div>
+            <div class="col-sm-1">
+              Action
+            </div>
+          </div>
+          <div class="row listrow" *ngFor="let item of lisTPpdrt; index as zi">
+            <div class="col-sm">
+              {{item?.produit?.nomProduit}}
+            </div>
+            <div class="col-sm">
+              {{item?.quantite}}
+            </div>
+            <div class="col-sm-1">
+              {{item?.produit?.prixKg}}
+            </div>
+            <div class="col-sm-1 supp d-flex" (click)="annuler(zi)">
+              x
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>    
+  </div>
+</main>
